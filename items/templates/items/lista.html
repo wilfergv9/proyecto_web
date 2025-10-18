@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Objetos perdidos</h2>
+
+{% for objeto in objetos %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ objeto.titulo }}</h5>
+    <p class="card-text">{{ objeto.descripcion|truncatewords:25 }}</p>
+    <p><small class="text-muted">Publicado por {{ objeto.usuario.username }} — {{ objeto.fecha_publicacion|date:"d M Y" }}</small></p>
+    <a href="{% url 'detalle_objeto' objeto.pk %}" class="btn btn-primary btn-sm">Ver más</a>
+  </div>
+</div>
+{% empty %}
+<p>No hay objetos registrados.</p>
+{% endfor %}
+{% endblock %}

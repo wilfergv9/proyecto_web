@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ objeto.titulo }}</h2>
+<p>{{ objeto.descripcion }}</p>
+<p><strong>Publicado por:</strong> {{ objeto.usuario.username }}</p>
+<p><strong>Estado:</strong> {% if objeto.encontrado %}✅ Encontrado{% else %}❌ Perdido{% endif %}</p>
+
+{% if user == objeto.usuario or user.is_staff %}
+  <a href="{% url 'editar_objeto' objeto.pk %}" class="btn btn-warning">Editar</a>
+  <a href="{% url 'eliminar_objeto' objeto.pk %}" class="btn btn-danger">Eliminar</a>
+{% endif %}
+{% endblock %}
