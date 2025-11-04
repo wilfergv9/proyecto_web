@@ -1,1 +1,1 @@
-Mi primer archivo manejado con Git
+Aprendiendo Git como un pro.
